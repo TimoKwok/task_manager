@@ -14,6 +14,8 @@ defmodule TaskMasterWeb.Router do
     plug :accepts, ["json"]
   end
 
+
+  #what does this do? All requests like this will be handled by the home/2 function in the PageController module
   scope "/", TaskMasterWeb do
     pipe_through :browser
 
