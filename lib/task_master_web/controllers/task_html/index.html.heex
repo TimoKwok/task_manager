@@ -1,0 +1,33 @@
+<.header>
+  Listing Your Tasks
+  <h1>
+    This is where this goes, here are all your tasks buddy!
+  </h1>
+  <:actions>
+    <.link href={~p"/tasks/new"}>
+      <.button>New Task?</.button>
+    </.link>
+  </:actions>
+</.header>
+
+
+
+
+
+
+
+<.table id="tasks" rows={@tasks} row_click={&JS.navigate(~p"/tasks/#{&1}")}>
+  <:col :let={task} label="Title"><%= task.title %></:col>
+  <:col :let={task} label="Description"><%= task.description %></:col>
+  <:action :let={task}>
+    <div class="sr-only">
+      <.link navigate={~p"/tasks/#{task}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/tasks/#{task}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={task}>
+    <.link href={~p"/tasks/#{task}"} method="delete" data-confirm="Are you sureeeee?">
+      Delete
+    </.link>
+  </:action>
+</.table>
