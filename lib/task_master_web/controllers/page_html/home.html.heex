@@ -1,5 +1,8 @@
-<form id="task-form">
-  <input type="text" id="task-title" placeholder="Title" required />
-  <textarea id="task-description" placeholder="Description" required></textarea>
-  <button type="submit">Add Task</button>
-</form>
+<.header class="custom-header">
+  <:actions>
+    <.link href={~p"/tasks"} class="custom-link">
+      <.button class="custom-button">TaskMaster</.button>
+    </.link>
+  </:actions>
+</.header>
+
