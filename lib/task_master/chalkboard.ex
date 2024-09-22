@@ -67,6 +67,7 @@ defmodule TaskMaster.Chalkboard do
       {:error, %Ecto.Changeset{}}
 
   """
+  #this is the "edit" function
   def update_task(%Task{} = task, attrs) do
     task
     |> Task.changeset(attrs)
@@ -85,6 +86,11 @@ defmodule TaskMaster.Chalkboard do
       {:error, %Ecto.Changeset{}}
 
   """
+
+
+  #dev intervention, change this so  that it moves it to another page
+
+
   def delete_task(%Task{} = task) do
     Repo.delete(task)
   end
@@ -100,5 +106,15 @@ defmodule TaskMaster.Chalkboard do
   """
   def change_task(%Task{} = task, attrs \\ %{}) do
     Task.changeset(task, attrs)
+  end
+
+  def move_task(%Task{} = task) do
+    # Prepare the new attributes with board_id set to 2
+    attrs = %{board_id: 2}
+
+    # Update the task with the new attributes
+    task
+    |> Task.changeset(attrs)  # Use the changeset to prepare the update
+    |> TaskMaster.Repo.update()  # Attempt to update in the database
   end
 end

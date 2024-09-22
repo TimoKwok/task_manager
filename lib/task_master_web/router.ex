@@ -20,6 +20,9 @@ defmodule TaskMasterWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/tasks/trash", TaskController, :trash
+    post "/tasks/move/:id", TaskController, :move
+
 
     resources "/tasks", TaskController
   end
