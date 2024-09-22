@@ -22,6 +22,7 @@ defmodule TaskMasterWeb.Router do
     get "/", PageController, :home
     get "/tasks/trash", TaskController, :trash
     post "/tasks/move/:id", TaskController, :move
+    post "/tasks/recover/:id", TaskController, :recover
 
 
     resources "/tasks", TaskController
