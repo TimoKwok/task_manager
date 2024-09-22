@@ -9,6 +9,17 @@ defmodule TaskMasterWeb.TaskController do
     render(conn, :index, tasks: tasks)
   end
 
+
+
+  def trash(conn, _params) do
+    tasks = Chalkboard.list_tasks()
+    render(conn, :trash, tasks: tasks)
+  end
+
+
+
+
+
   def new(conn, _params) do
     changeset = Chalkboard.change_task(%Task{})
     render(conn, :new, changeset: changeset)
@@ -39,6 +50,8 @@ defmodule TaskMasterWeb.TaskController do
 
   def update(conn, %{"id" => id, "task" => task_params}) do
     task = Chalkboard.get_task!(id)
+    IO.inspect(task_params)
+    IO.inspect("HELLOOO TIMOOOO")
 
     case Chalkboard.update_task(task, task_params) do
       {:ok, task} ->
@@ -57,6 +70,20 @@ defmodule TaskMasterWeb.TaskController do
 
     conn
     |> put_flash(:info, "Task deleted successfully.")
+    |> redirect(to: ~p"/tasks/trash")
+  end
+
+  #Ok, now I need to make the mock-delete function, every other function here is using functions from the chalkboard
+  #this is great because I just got done making funcitons inside of chalkboard!
+  #chalkboard function: move_task, it just changes the ID from 1 to 2, but I need to grab the task so I will copy-ish the delete func
+  def move(conn, %{"id" => id}) do
+    task = Chalkboard.get_task!(id)
+    {:ok, _task} = Chalkboard.move_task(task)
+
+    conn
+    |> put_flash(:info, "Task Has Been Moved To Trash")
     |> redirect(to: ~p"/tasks")
   end
+
+
 end

@@ -1,0 +1,31 @@
+<.header>
+    Your Deleted Tasks
+    <h1>
+      Recover deleted tasks, or delete them for good 
+    </h1>
+    <:actions>
+        <.link href={~p"/tasks"}>
+          <.button>Return</.button>
+        </.link>
+      </:actions>
+</.header>
+
+
+<.table id="tasks" rows={ @tasks|> Enum.filter(&(&1.board_id == 2))} row_click={&JS.navigate(~p"/tasks/#{&1}")}>
+  <:col :let={task} label="Title"><%= task.title %></:col>
+  <:col :let={task} label="Description"><%= task.description %></:col>
+
+  <:action :let={task}>
+    <div class="sr-only">
+      <.link navigate={~p"/tasks/#{task}"}>Show</.link>
+    </div>
+      <.link navigate={~p"/tasks"}>Recover</.link>
+  </:action>
+
+  <:action :let={task}>
+    <.link href={~p"/tasks/#{task.id}"} method="delete" data-confirm="Delete Task For Good?">
+      Delete
+    </.link>
+  </:action>
+
+</.table>

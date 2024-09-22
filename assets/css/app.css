@@ -37,7 +37,16 @@
 
 
 
-
+#trash .button
+{
+  padding: 10px 15px;
+  background-color: #ff0000;
+  color: rgb(255, 0, 0);
+  border: none;
+  border-radius: 5px;
+  border-color: #007bff;
+  color: #ff0088;
+}
 
 #task-form {
   margin: 20px;
