@@ -73,16 +73,21 @@ defmodule TaskMasterWeb.TaskController do
     |> redirect(to: ~p"/tasks/trash")
   end
 
-  #Ok, now I need to make the mock-delete function, every other function here is using functions from the chalkboard
-  #this is great because I just got done making funcitons inside of chalkboard!
-  #chalkboard function: move_task, it just changes the ID from 1 to 2, but I need to grab the task so I will copy-ish the delete func
-  def move(conn, %{"id" => id}) do
+    def move(conn, %{"id" => id}) do
     task = Chalkboard.get_task!(id)
     {:ok, _task} = Chalkboard.move_task(task)
 
     conn
     |> put_flash(:info, "Task Has Been Moved To Trash")
     |> redirect(to: ~p"/tasks")
+  end
+
+  def recover(conn, %{"id" => id}) do
+    task = Chalkboard.get_task!(id)
+    {:ok, _task} = Chalkboard.move_back(task)
+    conn
+    |> put_flash(:info, "Task Has Been Recovered")
+    |> redirect(to: ~p"/tasks/trash")
   end
 
 

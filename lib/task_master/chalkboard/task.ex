@@ -18,9 +18,6 @@ defmodule TaskMaster.Chalkboard.Task do
   end
 
 
-  def semi_delete(task) do
-    task
-    |> Ecto.Changeset.change(board_id: 2)  # Update the board_id field to 2 instead of default 1
-  end
+
 
 end

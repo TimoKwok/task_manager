@@ -19,7 +19,9 @@
     <div class="sr-only">
       <.link navigate={~p"/tasks/#{task}"}>Show</.link>
     </div>
-      <.link navigate={~p"/tasks"}>Recover</.link>
+    <.link href={~p"/tasks/recover/#{task.id}"} method="post" data-confirm="Recover Task?">
+      Recover
+    </.link>
   </:action>
 
   <:action :let={task}>

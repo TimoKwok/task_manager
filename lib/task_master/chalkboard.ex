@@ -117,4 +117,14 @@ defmodule TaskMaster.Chalkboard do
     |> Task.changeset(attrs)  # Use the changeset to prepare the update
     |> TaskMaster.Repo.update()  # Attempt to update in the database
   end
+
+  def move_back(%Task{} = task) do
+    attrs = %{board_id: 1}
+    task
+    |> Task.changeset(attrs)
+    |> TaskMaster.Repo.update()
+  end
+
+
+
 end
