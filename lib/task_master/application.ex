@@ -17,7 +17,8 @@ defmodule TaskMaster.Application do
       # Start a worker by calling: TaskMaster.Worker.start_link(arg)
       # {TaskMaster.Worker, arg},
       # Start to serve requests, typically the last entry
-      TaskMasterWeb.Endpoint
+      TaskMasterWeb.Endpoint,
+      {Oban, oban_config()}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -33,4 +34,21 @@ defmodule TaskMaster.Application do
     TaskMasterWeb.Endpoint.config_change(changed, removed)
     :ok
   end
+
+
+
+  def oban_config do
+    opts = Application.get_env(:task_master, Oban)
+
+    if Code.ensure_loaded?(IEx) and IEx.started?() do
+      opts
+      |> Keyword.put(:crontab, false)
+      |> Keyword.put(:queues, false)
+    else
+      opts
+    end
+  end
+
+
+
 end

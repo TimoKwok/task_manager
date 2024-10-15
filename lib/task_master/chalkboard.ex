@@ -108,23 +108,35 @@ defmodule TaskMaster.Chalkboard do
     Task.changeset(task, attrs)
   end
 
-  def move_task(%Task{} = task) do
-    # Prepare the new attributes with board_id set to 2
-    attrs = %{board_id: 2}
 
-    # Update the task with the new attributes
-    task
-    |> Task.changeset(attrs)  # Use the changeset to prepare the update
-    |> TaskMaster.Repo.update()  # Attempt to update in the database
+
+
+
+  #this is where I also need to add the functionality of updating the trashed_at attribute form being nil to the current time, then back to nil
+  #now I need to enqueue the oban job that I made in the garbage_man module
+  def move_task(%Task{} = task) do
+    attrs = %{board_id: 2, trashed_at: DateTime.utc_now()}
+    case task
+         |> Task.changeset(attrs)
+         |> TaskMaster.Repo.update() do
+      {:ok, updated_task} ->
+        %{"task_id" => updated_task.id}
+        |> TaskMaster.Jobs.GarbageMan.new(schedule_in: 24 * 60 * 60)
+        |> Oban.insert()
+      {:error, _} ->
+        :error
+    end
   end
 
+
+
+
+
   def move_back(%Task{} = task) do
-    attrs = %{board_id: 1}
+    attrs = %{board_id: 1, trashed_at: nil}
     task
     |> Task.changeset(attrs)
     |> TaskMaster.Repo.update()
   end
-
-
 
 end

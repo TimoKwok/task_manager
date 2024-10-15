@@ -1,7 +1,7 @@
 <.header>
     Your Deleted Tasks
     <h1>
-      Recover deleted tasks, or delete them for good 
+      Recover or delete trashed tasks, tasks will be auto deleted after 24 hours.
     </h1>
     <:actions>
         <.link href={~p"/tasks"}>
@@ -14,6 +14,7 @@
 <.table id="tasks" rows={ @tasks|> Enum.filter(&(&1.board_id == 2))} row_click={&JS.navigate(~p"/tasks/#{&1}")}>
   <:col :let={task} label="Title"><%= task.title %></:col>
   <:col :let={task} label="Description"><%= task.description %></:col>
+  <:col :let={task} label="Trashed At"><%= task.trashed_at %> </:col>
 
   <:action :let={task}>
     <div class="sr-only">
