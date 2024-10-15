@@ -6,6 +6,9 @@ defmodule TaskMaster.Chalkboard.Task do
     field :description, :string
     field :title, :string
     field :board_id, :integer, default: 1
+    field :trashed_at, :utc_datetime
+
+
 
     timestamps(type: :utc_datetime)
   end
@@ -13,7 +16,7 @@ defmodule TaskMaster.Chalkboard.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:title, :description, :board_id])
+    |> cast(attrs, [:title, :description, :board_id, :trashed_at])
     |> validate_required([:title, :description, :board_id])
   end
 
