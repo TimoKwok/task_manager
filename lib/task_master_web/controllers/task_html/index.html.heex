@@ -19,12 +19,6 @@
 
 </.header>
 
-
-
-
-
-
-
 <.table id="tasks" rows={ @tasks|> Enum.filter(&(&1.board_id == 1))} row_click={&JS.navigate(~p"/tasks/#{&1}")}>
   <:col :let={task} label="Title"><%= task.title %></:col>
   <:col :let={task} label="Description"><%= task.description %></:col>

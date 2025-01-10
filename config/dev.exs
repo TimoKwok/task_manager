@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :task_master, TaskMaster.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "cheerio12",
   hostname: "localhost",
   database: "task_master_dev",
   stacktrace: true,
