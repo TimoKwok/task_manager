@@ -1,4 +1,7 @@
 import Config
+#Dotenv.load()
+
+
 
 # Configure your database
 config :task_master, TaskMaster.Repo,
