@@ -60,7 +60,8 @@ defmodule TaskMaster.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:oban, "~> 2.17"},
-      {:dotenv, "~> 3.0.0", only: [:dev]}
+      {:dotenvy, "~> 0.9.0"}
+
     ]
   end
 

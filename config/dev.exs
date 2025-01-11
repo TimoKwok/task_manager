@@ -1,12 +1,20 @@
 import Config
-#Dotenv.load()
 
 
+# Manually load .env file, I could not figure out how to use "dotenv" save for when I have more time"
+File.read!(".env")
+|> String.split("\n")
+|> Enum.each(fn line ->
+  unless line =~ ~r/^\s*#/ do
+    [key, value] = String.split(line, "=", parts: 2)
+    System.put_env(key, value)
+  end
+end)
 
 # Configure your database
 config :task_master, TaskMaster.Repo,
   username: "postgres",
-  password: "cheerio12",
+  password: System.get_env("POSTGRES_PASSWORD"),
   hostname: "localhost",
   database: "task_master_dev",
   stacktrace: true,
