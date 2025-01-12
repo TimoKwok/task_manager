@@ -10,13 +10,20 @@
   </:actions>
 
 
+
   <:actions>
     <.link href={~p"/tasks/trash"}>
       <.button>Trash</.button>
     </.link>
   </:actions>
 
+  <:actions>
+    <.link href={~p"/tasks/chat"}>
+      <.button>Live Chat</.button>
+    </.link>
+  </:actions>
 
+  
 </.header>
 
 <.table id="tasks" rows={ @tasks|> Enum.filter(&(&1.board_id == 1))} row_click={&JS.navigate(~p"/tasks/#{&1}")}>
