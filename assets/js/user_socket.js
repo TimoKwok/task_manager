@@ -57,6 +57,27 @@ socket.connect()
 // Let's assume you have a channel with a topic named `room` and the
 // subtopic is its id - in this case 42:
 let channel = socket.channel("master_board:lobby", {})
+let chatInput = document.querySelector("#chat-input")
+let messagesContainer = document.querySelector("#messages")
+
+chatInput.addEventListener("keypress", event => {
+  //i want to edit this as well so that it can be a button next to the text box.
+  if(event.key === 'Enter'){
+    channel.push("new_msg", {body: chatInput.value})
+    chatInput.value = ""
+  }
+})
+//we listen for new messages and append them to our messages container.
+//We listen for the "new_msg" event using channel.on, and then append the message body to the DOM.
+channel.on("new_msg", payload => {
+  let messageItem = document.createElement("p")
+  messageItem.innerText = `[${Date()}] ${payload.body}` //this is the message syntax when u hit enter
+  messagesContainer.appendChild(messageItem)
+})
+
+
+
+
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully, well done broseph", resp) })
   .receive("error", resp => { console.log("Unable to join, sorry dude", resp) })

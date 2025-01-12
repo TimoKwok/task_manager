@@ -11,4 +11,11 @@ defmodule TaskMasterWeb.Master_BoardChannel do
     broadcast(socket, "new_task", payload) #sends the payload (the task details) to all clients connected to the "master__board:lobby" topic
     {:noreply, socket}
   end
+
+  def handle_ina("new_msg", %{"body" => body}, socket) do
+    broadcast!(socket, "new_msg", %{body: body})
+    {:noreply, socket}
+  end
+
+
 end
