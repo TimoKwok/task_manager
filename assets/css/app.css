@@ -54,3 +54,12 @@
 }
 
 /* Chat page */
+.chat-container {
+  display: flex;
+  border: 1px solid;
+  flex-direction: column;
+  padding: 1em;
+  margin: -1em 1em 1em -1em;
+  justify-content: space-between;
+  height: 500px;
+}
