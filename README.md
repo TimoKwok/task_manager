@@ -1,12 +1,13 @@
 # TaskMaster
 
+Hello there!
 
-Latest commit of project is currently being hosted on render [click this link]
-(https://task-manager-g7rp.onrender.com/)
+The latest commit of this project is currently being hosted on render:
+https://task-manager-g7rp.onrender.com/
 
 
 
-
+Phoenix app default stuff:
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
