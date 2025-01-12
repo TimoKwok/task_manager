@@ -12,7 +12,7 @@ defmodule TaskMasterWeb.Master_BoardChannel do
     {:noreply, socket}
   end
 
-  def handle_ina("new_msg", %{"body" => body}, socket) do
+  def handle_in("new_msg", %{"body" => body}, socket) do
     broadcast!(socket, "new_msg", %{body: body})
     {:noreply, socket}
   end

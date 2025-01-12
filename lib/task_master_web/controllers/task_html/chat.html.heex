@@ -1,16 +1,19 @@
 <.header>
-    (BETA) Live Chat Service
-    <h1>
-      Discuss with other online members about your task planning
-    </h1>
-    <:actions>
-        <.link href={~p"/tasks"}>
-          <.button>Return</.button>
-        </.link>
-      </:actions>
+  (BETA) Live Chat Service
+  <h1>
+    Discuss with other online members about your task planning
+  </h1>
+  <:actions>
+      <.link href={~p"/tasks"}>
+        <.button>Return</.button>
+      </.link>
+    </:actions>
+
+
+
+  <div id="messages" role="log" aria-live="polite"></div>
+  <input id="chat-input" type="text">
+
 </.header>
 
-
-<div id="messages" role="log" aria-live="polite"></div>
-<input id="chat-input" type="text">
 

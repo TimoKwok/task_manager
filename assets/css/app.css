@@ -3,9 +3,6 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
-
-
-
 .custom-header {
   text-align: center;
   align-items: center;
@@ -34,53 +31,26 @@
   background-color: #ffffff; /* Button background color on hover */
 }
 
-
-
-
-#trash .button
-{
-  padding: 10px 15px;
-  background-color: #ff0000;
-  color: rgb(255, 0, 0);
-  border: none;
-  border-radius: 5px;
-  border-color: #007bff;
-  color: #ff0088;
+/* attempting to edit the homepage */
+.home-button {
+  background-color: #000000; /* Button background color */
+  color: rgb(255, 255, 255); /* Button text color */
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  font-size: 36px;            /* Makes the text larger */
+  padding: 20px 30px;
+  size: 20;
 }
 
-#task-form {
-  margin: 20px;
-  padding: 10px;
-  border: 1px solid #ff0000;
-  border-radius: 5px;
-  background-color: #007bff;
+.home-header {
+  text-align: center;
   align-items: center;
-  color: #ff0088;
-
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  height: 100vh;           /* Full viewport height */
+  width: 100%;             /* Full width */
 }
 
-#task-form input,
-#task-form textarea {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-  background-color: #ff0088;
-  align-items: center;
-  color: #ff0088;
-
-}
-
-#task-form button {
-  padding: 10px 15px;
-  background-color: #ff0000;
-  color: rgb(255, 0, 0);
-  border: none;
-  border-radius: 5px;
-  border-color: #007bff;
-  color: #ff0088;
-}
-
-#task-form button:hover {
-  background-color: #007bff;
-  color: #ff0088;
-}
+/* Chat page */

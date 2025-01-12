@@ -18,7 +18,7 @@ defmodule TaskMasterWeb.TaskController do
 
 
   def chat(conn, _params) do
-    render(conn, :chat, layout: false)
+    render(conn, :chat)
   end
 
 
