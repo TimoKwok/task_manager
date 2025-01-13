@@ -14,7 +14,7 @@ config :task_master,
 # Configures the endpoint
 # Must add it so that it can also run on Render
 config :task_master, TaskMasterWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: System.get_env("RENDER_EXTERNAL_HOSTNAME")],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
     formats: [html: TaskMasterWeb.ErrorHTML, json: TaskMasterWeb.ErrorJSON],
