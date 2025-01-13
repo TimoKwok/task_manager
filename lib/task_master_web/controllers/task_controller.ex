@@ -78,7 +78,6 @@ defmodule TaskMasterWeb.TaskController do
     def move(conn, %{"id" => id}) do
     task = Chalkboard.get_task!(id)
     {:ok, _task} = Chalkboard.move_task(task)
-
     conn
     |> put_flash(:info, "Task Has Been Moved To Trash")
     |> redirect(to: ~p"/tasks")

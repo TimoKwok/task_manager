@@ -21,10 +21,10 @@ defmodule TaskMasterWeb.Router do
 
     get "/", PageController, :home
     get "/tasks/trash", TaskController, :trash
-    post "/tasks/move/:id", TaskController, :move
-    post "/tasks/recover/:id", TaskController, :recover
+    get "/tasks/move/:id", TaskController, :move
+    get "/tasks/recover/:id", TaskController, :recover
     get "/tasks/chat", TaskController, :chat
-
+    get "/tasks/delete/:id", TaskController, :delete
 
     resources "/tasks", TaskController
   end
