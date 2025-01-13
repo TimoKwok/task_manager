@@ -6,8 +6,26 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :task_master, TaskMasterWeb.Endpoint,
-  url: [host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "task-manager-g7rp.onrender.com", scheme: "https", port: 443],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  url: [
+    host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "task-manager-g7rp.onrender.com",
+    scheme: "https",
+    port: 443
+  ],
+  check_origin: [
+    "https://" <> (System.get_env("RENDER_EXTERNAL_HOSTNAME") || "task-manager-g7rp.onrender.com"),
+    "http://localhost:4000" # Allow local development
+  ],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  adapter: Bandit.PhoenixAdapter,
+  render_errors: [
+    formats: [html: TaskMasterWeb.ErrorHTML, json: TaskMasterWeb.ErrorJSON],
+    layout: false
+  ],
+  pubsub_server: TaskMaster.PubSub,
+  live_view: [signing_salt: "qubVAq85"]
+
+
+
 
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: TaskMaster.Finch
