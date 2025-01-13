@@ -12,6 +12,7 @@ config :task_master,
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
+# Must add it so that it can also run on Render
 config :task_master, TaskMasterWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
