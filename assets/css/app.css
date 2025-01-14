@@ -33,17 +33,23 @@
 
 /* attempting to edit the homepage */
 .home-button {
-  background-color: #000000; /* Button background color */
+  background-color: #19184c; /* Button background color */
   color: rgb(255, 255, 255); /* Button text color */
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: center;     /* Centers vertically */
-  font-size: 36px;            /* Makes the text larger */
-  padding: 20px 30px;
+  font-size: 80px;            /* Makes the text larger */
+  padding: 40px 50px;
   size: 20;
 }
 
+
+
+
 .home-header {
+  background-image: url('https://images3.alphacoders.com/786/786832.jpg');
+  background-size: cover; 
+  background-position: center; 
   text-align: center;
   align-items: center;
   display: flex;
